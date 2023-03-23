@@ -13,13 +13,11 @@ import java.math.BigDecimal;
 public class Index {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Long id;
     private String indexName;
     private BigDecimal unitPrice;
-    private int area;
+    private float area;
     private int CLCL;
     private BigDecimal totalPrice;
-    @ManyToOne
-    @JoinColumn(name = "property_id") // thông qua khóa ngoại address_id
-    private Property property;
+    private Long property_id;
 }

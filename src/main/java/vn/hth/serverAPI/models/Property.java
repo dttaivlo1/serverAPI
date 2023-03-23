@@ -1,5 +1,6 @@
 package vn.hth.serverAPI.models;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,14 +16,18 @@ public class Property {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long id;
+    private Long quotation_id;
     private  String propertyName;
+
     private String address;
     private String planning;
     private String dataSource;
-    @OneToMany(mappedBy = "property", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "property_id", cascade = CascadeType.ALL)
     private Collection<Index> indexes;
-    @ManyToOne
-    @JoinColumn(name = "quotation_id") // thông qua khóa ngoại address_id
-    private Quotation quotation;
 
+
+
+    public Property() {
+
+    }
 }

@@ -15,17 +15,13 @@ public class Quotation  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long id;
-    private String cusName;
+    private String name;
     private  String phone;
     private String requestBy;
     private  String responseBy;
-    private Date createAt;
-
-
-
+    private String createAt;
     private boolean status;
-
-    @OneToMany(mappedBy = "quotation", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "quotation_id", cascade = CascadeType.ALL)
     private Collection<Property> properties;
 
 }
