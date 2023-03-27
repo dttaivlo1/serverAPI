@@ -32,7 +32,7 @@ public class QuotationController {
     public ResponseEntity getAll()  {
         return  sender(quotationRes.findAll());
     }
-    @CrossOrigin
+   @CrossOrigin(origins = "*")
     @PostMapping(value = "/create", produces = "application/json")
     public Quotation createQuestion(@RequestBody ObjectNode payload) {
         System.out.println(payload.get("userData"));
@@ -83,8 +83,9 @@ public class QuotationController {
     }
     public ResponseEntity sender(Object object) {
         HttpHeaders responseHeaders = new HttpHeaders();
-        responseHeaders.set("Access-Control-Allow-Origin", "*" );
-        responseHeaders.set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        responseHeaders.add("Access-Control-Allow-Headers", "*");
+        responseHeaders.add("Access-Control-Allow-Methods", "*");
+        responseHeaders.add("Access-Control-Allow-Origin", "*");
         return ResponseEntity.ok().headers(responseHeaders).body(object);
     }
     //Property API
